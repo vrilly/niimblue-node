@@ -157,3 +157,16 @@ export const scan = async (r: IncomingMessage) => {
 
   throw new RestError("Invalid transport", 400);
 };
+
+export const rfid = async () => {
+  assertConnected();
+
+  try {
+    const info = await client!.abstraction.rfidInfo();
+    return {
+      rfid: info,
+    };
+  } catch {
+    throw new RestError("RFID Not supported", 500);
+  }
+};

@@ -24,6 +24,7 @@ export const cliStartServer = (options: ServerOptions) => {
   s.get("/info", w.info);
   s.post("/print", w.print);
   s.post("/scan", w.scan);
+  s.get("/rfid", w.rfid);
 
   s.start(options.host, options.port, () => {
     console.log(`Server is listening ${options.host}:${options.port}`);
